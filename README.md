@@ -1,5 +1,11 @@
 # ☕ Volta Coffee – AI Wholesale Order Processing
 
+![n8n](https://img.shields.io/badge/n8n-Workflow-EA4B71?logo=n8n&logoColor=white)
+![Google Gemini](https://img.shields.io/badge/Google-Gemini-4285F4?logo=google&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E?logo=javascript&logoColor=black)
+![Airtable](https://img.shields.io/badge/Airtable-Database-18BFFF?logo=airtable&logoColor=white)
+![Gmail](https://img.shields.io/badge/Gmail-API-EA4335?logo=gmail&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green)
 ![Title](assets/project-banner.png)
 
 AI-assisted wholesale order processing workflow built with **n8n**, **Google Gemini**, **JavaScript**, **Airtable**, and **Gmail**.
