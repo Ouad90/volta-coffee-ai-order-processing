@@ -1,150 +1,250 @@
-# Volta Coffee AI Order Processing
+# ☕ Volta Coffee – AI Wholesale Order Processing
 
-An AI-assisted workflow for processing wholesale coffee orders using n8n, Google Gemini, JavaScript, Airtable, and Gmail.
+AI-assisted wholesale order processing workflow built with **n8n**, **Google Gemini**, **JavaScript**, **Airtable**, and **Gmail**.
 
-![Workflow overview](images/workflow_overview.png)
+This project demonstrates how AI can automate repetitive business tasks while keeping humans responsible for important decisions. Free-text wholesale coffee orders are converted into structured data, validated, stored in Airtable, classified according to business rules, and followed by the appropriate automated email response.
 
-## Project Overview
+---
 
-This project was created as part of the AI Automations & Agent Foundations module.
+# ✨ Features
 
-The goal was to automate the first stage of wholesale order processing. Customer orders often arrive as free-text messages containing products, quantities, delivery details, and special requests. Reading and processing every order manually is repetitive and can lead to delays or inconsistent handling.
+- 🤖 AI-powered information extraction using Google Gemini
+- 🧹 JavaScript validation and JSON parsing
+- 🗂 Structured order storage in Airtable
+- 🔀 Automatic order classification
+- 📧 Automated Gmail responses
+- 👤 Human-in-the-loop decision making
+- ✅ End-to-end workflow automation with n8n
 
-The workflow extracts the relevant information, validates the AI response, stores the order, classifies it, and sends the appropriate customer email.
+---
 
-## Workflow
+# 📌 Business Problem
 
-The workflow follows five main stages:
+Wholesale coffee orders often arrive as free-text messages by email or online forms. Employees must manually read every order, extract important information, copy it into internal systems, decide what to do next, and respond to the customer.
 
-1. **Customer Intake**  
-   A wholesale order is submitted through an n8n form.
+This process is repetitive, time-consuming, and prone to errors.
 
-2. **AI Processing**  
-   Google Gemini extracts structured information from the free-text order.
+<p align="center">
+<img src="images/business_problem.png" width="1000">
+</p>
 
-3. **Validation**  
-   A JavaScript node parses and normalizes the AI output.
+The objective of this project is to automate repetitive administrative work while ensuring that important business decisions remain under human control.
 
-4. **Order Storage**  
-   The validated order is stored in Airtable.
+---
 
-5. **Classification and Communication**  
-   A Switch node routes the order and Gmail sends the appropriate response.
+# 💡 Proposed Solution
 
-## Order Classifications
+The workflow combines AI with business rules to automate the complete order processing pipeline.
 
-### Standard
+The workflow:
 
-The order is complete and does not contain special conditions.
+- extracts structured information using Google Gemini
+- validates the extracted data
+- stores the order in Airtable
+- classifies the order
+- sends the appropriate customer response
 
-**Outcome:** Confirmation email.
+Orders requiring human attention are automatically routed for review instead of being processed automatically.
 
-### Needs Review
+---
 
-The order contains a substitution, large quantity, or special request requiring human attention.
+# 🔄 Workflow Architecture
 
-**Outcome:** Review email.
+The solution is implemented in **n8n** using modular workflow phases.
 
-### Needs Clarification
+<p align="center">
+<img src="images/workflow_architecture.png" width="1000">
+</p>
 
-Important information, such as quantity or delivery details, is missing or unclear.
+The workflow consists of five main stages:
 
-**Outcome:** Clarification email.
+1. Customer Intake
+2. AI Processing
+3. Order Storage
+4. Decision Logic
+5. Customer Communication
 
-## Technologies Used
+---
+
+# 🤖 AI Decision Logic
+
+After extracting and validating the order, the workflow classifies it into one of three categories.
+
+<p align="center">
+<img src="images/ai_decision_making.png" width="1000">
+</p>
+
+| Classification | Workflow Action |
+|----------------|----------------|
+| ✅ Standard | Confirmation email |
+| 🟡 Needs Review | Routed for human review |
+| 🔴 Needs Clarification | Customer asked for missing information |
+
+The AI performs the first assessment while humans remain responsible for exceptional cases.
+
+---
+
+# 🗂 Airtable Integration
+
+Validated orders are automatically stored in Airtable to create a centralized and searchable order database.
+
+<p align="center">
+<img src="images/airtable_results.png" width="1000">
+</p>
+
+Each record contains:
+
+- Customer information
+- Ordered products
+- Delivery details
+- AI classification
+- Notes for human review
+
+---
+
+# 📧 Automated Customer Communication
+
+Based on the classification result, the workflow automatically sends one of three email templates.
+
+- ✅ Confirmation Email
+- 🟡 Review Email
+- 🔴 Clarification Email
+
+This ensures fast and consistent communication while keeping humans involved whenever necessary.
+
+---
+
+# ✅ Testing & Validation
+
+Three representative scenarios were tested.
+
+<p align="center">
+<img src="images/testing_validation.png" width="1000">
+</p>
+
+| Scenario | Expected Result | Status |
+|-----------|----------------|--------|
+| Standard Order | Confirmation Email | ✅ Passed |
+| Needs Review | Review Email | ✅ Passed |
+| Needs Clarification | Clarification Email | ✅ Passed |
+
+The workflow successfully:
+
+- extracted structured information
+- validated AI output
+- stored records in Airtable
+- classified orders correctly
+- sent the correct customer email
+
+---
+
+# ⚠ Challenges & Improvements
+
+During development several real-world issues were encountered.
+
+| Challenge | Solution |
+|------------|----------|
+| Inconsistent AI JSON | Improved Gemini prompt |
+| Airtable date formatting | Converted dates to ISO format |
+| Classification inconsistencies | JavaScript normalization |
+| Gmail authentication | Reconnected OAuth credentials |
+
+These improvements increased the reliability and maintainability of the workflow.
+
+---
+
+# 📈 Project Outcomes
+
+The completed workflow can:
+
+- ✅ Extract structured order information
+- ✅ Validate AI responses
+- ✅ Store validated records
+- ✅ Automatically classify orders
+- ✅ Send appropriate customer emails
+- ✅ Keep humans involved when required
+
+The project demonstrates how AI can automate repetitive operational tasks while preserving human oversight for business-critical decisions.
+
+---
+
+# 🛠 Technologies Used
 
 - n8n
 - Google Gemini
 - JavaScript
-- JSON
 - Airtable
-- Gmail
+- Gmail API
+- Markdown
+- GitHub
 
-## Testing
+---
 
-The workflow was tested using three representative scenarios:
-
-| Scenario | Expected Classification | Result |
-|---|---|---|
-| Complete order | Standard | Passed |
-| Substitution request | Needs Review | Passed |
-| Missing information | Needs Clarification | Passed |
-
-Testing confirmed that the workflow correctly:
-
-- extracted the order information,
-- stored the order in Airtable,
-- selected the correct route,
-- and sent the expected email.
-
-## Challenges Addressed
-
-During development, several issues were identified and corrected:
-
-- inconsistent JSON output,
-- Airtable date-format errors,
-- classification value inconsistencies,
-- Gmail authentication issues.
-
-The Gemini prompt was refined, JavaScript validation was added, dates were standardized, and classification values were normalized.
-
-## Human Oversight
-
-The workflow automates repetitive processing steps but keeps humans involved when an order contains uncertainty, substitutions, or special conditions.
-
-## Repository Structure
+# 📂 Repository Structure
 
 ```text
-.
-├── README.md
-├── LICENSE
+volta-coffee-ai-order-processing/
+│
+├── images/
+│   ├── business_problem.png
+│   ├── workflow_architecture.png
+│   ├── ai_decision_making.png
+│   ├── airtable_results.png
+│   ├── testing_validation.png
+│   └── email_response.png
+│
 ├── workflow/
 │   └── volta_coffee_ai_order_processing.json
+│
 ├── documentation/
-│   ├── 01_Project_Design.pdf
-│   ├── 03_Project_Testing.pdf
-│   ├── 04_Project_Summary.pdf
-│   └── 05_Presentation.pdf
-└── images/
-    ├── workflow_overview.png
-    ├── customer_order_form.png
-    ├── airtable_results.png
-    └── email_response.png
+│   ├── Project_Summary.pdf
+│   ├── Testing_Report.pdf
+│   └── Appendix.pdf
+│
+├── presentation/
+│   ├── Presentation.pdf
+│   └── Presentation.pptx
+│
+├── README.md
+└── LICENSE
 ```
 
-## How to Use the Workflow
+---
 
-1. Download the workflow JSON file.
-2. Import it into n8n.
-3. Configure your own Gemini, Airtable, and Gmail credentials.
-4. Create the required Airtable fields.
-5. Update the field mappings and email settings.
-6. Test the workflow before activating it.
+# 🚀 Future Improvements
 
-Credentials are not included in this repository.
+Possible future extensions include:
 
-## Limitations
+- Slack notifications
+- Inventory availability checks
+- ERP integration
+- Automatic invoice generation
+- Customer CRM integration
+- AI confidence scoring
+- Dashboard and analytics
 
-The current workflow does not include:
+---
 
-- live inventory checking,
-- price calculation,
-- invoice generation,
-- advanced email validation,
-- multilingual order processing.
+# ▶️ How to Use
 
-## Future Improvements
+1. Import the workflow JSON into n8n.
+2. Configure your Google Gemini credentials.
+3. Connect Airtable.
+4. Configure Gmail credentials.
+5. Execute the workflow using the included order form.
 
-Possible extensions include:
+---
 
-- inventory integration,
-- automatic invoice generation,
-- CRM integration,
-- manager approval workflows,
-- multilingual order support.
-
-## Author
+# 👤 Author
 
 **Dr. Ouad Soltani**
 
-Data Analytics and AI Automation
+PhD in Plant Biology
+
+Data Analytics & Artificial Intelligence Program
+
+Masterschool Institute of Technology
+
+---
+
+⭐ *This project was developed as part of the AI Automations & Agent Foundations course and demonstrates the practical application of AI-assisted workflow automation using n8n and Google Gemini.*
