@@ -1,5 +1,7 @@
 # ☕ Volta Coffee – AI Wholesale Order Processing
+
 ![Title](assets/project-banner.png)
+
 AI-assisted wholesale order processing workflow built with **n8n**, **Google Gemini**, **JavaScript**, **Airtable**, and **Gmail**.
 
 This project demonstrates how Artificial Intelligence can automate the repetitive processing of wholesale coffee orders while keeping humans responsible for business-critical decisions.
